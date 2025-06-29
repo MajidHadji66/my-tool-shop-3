@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "name": "Socket Wrench",
+    "type": "tool",
+    "quantity": 3,
+    "location": "Aisle 1",
+    "price": 19.99
+  },
+  {
+    "id": 2,
+    "name": "Oil Filter",
+    "type": "part",
+    "quantity": 25,
+    "location": "Aisle 2",
+    "price": 7.49
+  },
+  {
+    "id": 3,
+    "name": "Screwdriver Set",
+    "type": "tool",
+    "quantity": 16,
+    "location": "Aisle 1",
+    "price": 14.99
+  },
+  {
+    "id": 4,
+    "name": "Brake Pad",
+    "type": "part",
+    "quantity": 7,
+    "location": "Aisle 3",
+    "price": 29.99
+  },
+  {
+    "id": 5,
+    "name": "Hammer",
+    "type": "tool",
+    "quantity": 2,
+    "location": "Aisle 1",
+    "price": 11.99
+  },
+  {
+    "id": 6,
+    "name": "Pliers",
+    "type": "tool",
+    "quantity": 15,
+    "location": "Aisle 1",
+    "price": 9.99
+  },
+  {
+    "id": 7,
+    "name": "Adjustable Wrench",
+    "type": "tool",
+    "quantity": 9,
+    "location": "Aisle 1",
+    "price": 12.99
+  },
+  {
+    "id": 8,
+    "name": "Torque Wrench",
+    "type": "tool",
+    "quantity": 7,
+    "location": "Aisle 1",
+    "price": 24.99
+  },
+  {
+    "id": 9,
+    "name": "Allen Key Set",
+    "type": "tool",
+    "quantity": 20,
+    "location": "Aisle 1",
+    "price": 8.99
+  },
+  {
+    "id": 10,
+    "name": "Tape Measure",
+    "type": "tool",
+    "quantity": 18,
+    "location": "Aisle 1",
+    "price": 6.99
+  },
+  {
+    "id": 11,
+    "name": "Utility Knife",
+    "type": "tool",
+    "quantity": 15,
+    "location": "Aisle 1",
+    "price": 4.99
+  },
+  {
+    "id": 12,
+    "name": "Wire Cutter",
+    "type": "tool",
+    "quantity": 11,
+    "location": "Aisle 1",
+    "price": 10.99
+  },
+  {
+    "id": 13,
+    "name": "Level",
+    "type": "tool",
+    "quantity": 13,
+    "location": "Aisle 1",
+    "price": 15.99
+  },
+  {
+    "id": 14,
+    "name": "Chisel Set",
+    "type": "tool",
+    "quantity": 8,
+    "location": "Aisle 1",
+    "price": 22.99
+  },
+  {
+    "id": 15,
+    "name": "Hand Saw",
+    "type": "tool",
+    "quantity": 10,
+    "location": "Aisle 1",
+    "price": 18.99
+  },
+  {
+    "id": 16,
+    "name": "Pipe Wrench",
+    "type": "tool",
+    "quantity": 6,
+    "location": "Aisle 1",
+    "price": 16.99
+  },
+  {
+    "id": 17,
+    "name": "Hacksaw",
+    "type": "tool",
+    "quantity": 7,
+    "location": "Aisle 1",
+    "price": 13.99
+  },
+  {
+    "id": 18,
+    "name": "Caulking Gun",
+    "type": "tool",
+    "quantity": 5,
+    "location": "Aisle 1",
+    "price": 9.49
+  },
+  {
+    "id": 19,
+    "name": "Putty Knife",
+    "type": "tool",
+    "quantity": 13,
+    "location": "Aisle 1",
+    "price": 7.99
+  },
+  {
+    "id": 20,
+    "name": "Staple Gun",
+    "type": "tool",
+    "quantity": 8,
+    "location": "Aisle 1",
+    "price": 11.49
+  },
+  {
+    "id": 21,
+    "name": "Claw Hammer",
+    "type": "tool",
+    "quantity": 12,
+    "location": "Aisle 1",
+    "price": 15.49
+  },
+  {
+    "id": 22,
+    "name": "Rubber Mallet",
+    "type": "tool",
+    "quantity": 10,
+    "location": "Aisle 1",
+    "price": 9.99
+  },
+  {
+    "id": 23,
+    "name": "Combination Square",
+    "type": "tool",
+    "quantity": 9,
+    "location": "Aisle 1",
+    "price": 12.49
+  },
+  {
+    "id": 24,
+    "name": "Crescent Wrench",
+    "type": "tool",
+    "quantity": 11,
+    "location": "Aisle 1",
+    "price": 14.49
+  },
+  {
+    "id": 25,
+    "name": "Groove Joint Pliers",
+    "type": "tool",
+    "quantity": 7,
+    "location": "Aisle 1",
+    "price": 10.49
+  },
+  {
+    "id": 26,
+    "name": "Diagonal Cutter",
+    "type": "tool",
+    "quantity": 8,
+    "location": "Aisle 1",
+    "price": 11.99
+  },
+  {
+    "id": 27,
+    "name": "Needle Nose Pliers",
+    "type": "tool",
+    "quantity": 10,
+    "location": "Aisle 1",
+    "price": 9.49
+  },
+  {
+    "id": 28,
+    "name": "Flathead Screwdriver",
+    "type": "tool",
+    "quantity": 15,
+    "location": "Aisle 1",
+    "price": 8.99
+  },
+  {
+    "id": 29,
+    "name": "Phillips Screwdriver",
+    "type": "tool",
+    "quantity": 15,
+    "location": "Aisle 1",
+    "price": 8.99
+  },
+  {
+    "id": 30,
+    "name": "Air Filter",
+    "type": "part",
+    "quantity": 20,
+    "location": "Aisle 2",
+    "price": 15.99
+  },
+  {
+    "id": 31,
+    "name": "Spark Plug",
+    "type": "part",
+    "quantity": 30,
+    "location": "Aisle 2",
+    "price": 4.99
+  },
+  {
+    "id": 32,
+    "name": "Timing Belt",
+    "type": "part",
+    "quantity": 5,
+    "location": "Aisle 3",
+    "price": 25.99
+  },
+  {
+    "id": 33,
+    "name": "Alternator",
+    "type": "part",
+    "quantity": 3,
+    "location": "Aisle 3",
+    "price": 199.99
+  },
+  {
+    "id": 34,
+    "name": "Radiator Hose",
+    "type": "part",
+    "quantity": 12,
+    "location": "Aisle 2",
+    "price": 9.99
+  },
+  {
+    "id": 35,
+    "name": "Fuel Pump",
+    "type": "part",
+    "quantity": 4,
+    "location": "Aisle 3",
+    "price": 39.99
+  },
+  {
+    "id": 36,
+    "name": "Water Pump",
+    "type": "part",
+    "quantity": 6,
+    "location": "Aisle 3",
+    "price": 49.99
+  },
+  {
+    "id": 37,
+    "name": "Brake Rotor",
+    "type": "part",
+    "quantity": 10,
+    "location": "Aisle 3",
+    "price": 29.99
+  },
+  {
+    "id": 38,
+    "name": "Headlight Bulb",
+    "type": "part",
+    "quantity": 18,
+    "location": "Aisle 2",
+    "price": 12.99
+  },
+  {
+    "id": 39,
+    "name": "Tail Light Lens",
+    "type": "part",
+    "quantity": 8,
+    "location": "Aisle 2",
+    "price": 14.99
+  },
+  {
+    "id": 40,
+    "name": "Cabin Air Filter",
+    "type": "part",
+    "quantity": 14,
+    "location": "Aisle 2",
+    "price": 11.99
+  },
+  {
+    "id": 41,
+    "name": "Drive Belt",
+    "type": "part",
+    "quantity": 7,
+    "location": "Aisle 3",
+    "price": 17.99
+  },
+  {
+    "id": 42,
+    "name": "Thermostat",
+    "type": "part",
+    "quantity": 9,
+    "location": "Aisle 3",
+    "price": 24.99
+  },
+  {
+    "id": 43,
+    "name": "Oil Pan Gasket",
+    "type": "part",
+    "quantity": 11,
+    "location": "Aisle 3",
+    "price": 18.99
+  },
+  {
+    "id": 44,
+    "name": "PCV Valve",
+    "type": "part",
+    "quantity": 13,
+    "location": "Aisle 2",
+    "price": 7.99
+  },
+  {
+    "id": 45,
+    "name": "Ignition Coil",
+    "type": "part",
+    "quantity": 6,
+    "location": "Aisle 3",
+    "price": 29.99
+  },
+  {
+    "id": 46,
+    "name": "Wheel Bearing",
+    "type": "part",
+    "quantity": 10,
+    "location": "Aisle 3",
+    "price": 39.99
+  },
+  {
+    "id": 47,
+    "name": "Shock Absorber",
+    "type": "part",
+    "quantity": 8,
+    "location": "Aisle 3",
+    "price": 59.99
+  },
+  {
+    "id": 48,
+    "name": "Strut Mount",
+    "type": "part",
+    "quantity": 7,
+    "location": "Aisle 3",
+    "price": 49.99
+  },
+  {
+    "id": 49,
+    "name": "Control Arm",
+    "type": "part",
+    "quantity": 5,
+    "location": "Aisle 3",
+    "price": 75.99
+  },
+  {
+    "id": 50,
+    "name": "Ball Joint",
+    "type": "part",
+    "quantity": 9,
+    "location": "Aisle 3",
+    "price": 9.99
+  }
+]

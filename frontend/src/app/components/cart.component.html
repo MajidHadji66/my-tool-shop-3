@@ -1,0 +1,26 @@
+<mat-card style="max-width: 600px; margin: 3rem auto 3rem auto; padding: 2rem">
+  <mat-card-title>Shopping Cart</mat-card-title>
+  <mat-list *ngIf="cart.length; else empty">
+    <mat-list-item *ngFor="let item of cart; let i = index">
+      {{ i + 1 }}. {{ item.name }} - Qty: {{ item.quantity }} - Price: ${{
+        item.price | number : "1.2-2"
+      }}
+      - Total: ${{ item.price * item.quantity | number : "1.2-2" }}
+      <button mat-icon-button color="warn" (click)="removeOne(item)">
+        <mat-icon>remove_circle</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+  <div style="text-align: right; margin-top: 1rem" *ngIf="cart.length">
+    <div style="font-weight: bold; margin-bottom: 0.5rem">
+      Cart Total: ${{ getCartTotal() | number : "1.2-2" }}
+    </div>
+    <button mat-flat-button color="primary" [routerLink]="['/checkout']">
+      Checkout ({{ getTotalQuantity() }}
+      {{ getTotalQuantity() === 1 ? "item" : "items" }})
+    </button>
+  </div>
+  <ng-template #empty>
+    <p>Your cart is empty.</p>
+  </ng-template>
+</mat-card>
