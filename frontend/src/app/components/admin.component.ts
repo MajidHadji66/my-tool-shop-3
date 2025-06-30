@@ -6,7 +6,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { InventoryService, InventoryItem } from '../services/inventory';
+import { AddInventoryDialogComponent } from './add-inventory-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog.component';
 
 @Component({
   selector: 'app-admin',
@@ -19,6 +23,8 @@ import { InventoryService, InventoryItem } from '../services/inventory';
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
   template: `
     <mat-card style="max-width:700px;margin:2rem auto;">
@@ -46,6 +52,14 @@ import { InventoryService, InventoryItem } from '../services/inventory';
         </div>
       </div>
       <div *ngIf="loggedIn">
+        <button
+          mat-raised-button
+          color="primary"
+          style="margin-bottom:1rem;"
+          (click)="openAddDialog()"
+        >
+          Add Item
+        </button>
         <table
           mat-table
           [dataSource]="pagedItems"
@@ -79,6 +93,14 @@ import { InventoryService, InventoryItem } from '../services/inventory';
             <th mat-header-cell *matHeaderCellDef>Type</th>
             <td mat-cell *matCellDef="let item">{{ item.type }}</td>
           </ng-container>
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let item">
+              <button mat-button color="warn" (click)="deleteItem(item)">
+                Delete
+              </button>
+            </td>
+          </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
@@ -103,9 +125,13 @@ export class AdminComponent {
   pageSize = 15;
   pageIndex = 0;
   addQuantities: { [id: number]: number } = {};
-  displayedColumns = ['name', 'type', 'quantity', 'add'];
+  displayedColumns = ['name', 'type', 'quantity', 'add', 'delete'];
 
-  constructor(public inventoryService: InventoryService) {
+  constructor(
+    public inventoryService: InventoryService,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {
     this.loadItems();
   }
 
@@ -148,5 +174,49 @@ export class AdminComponent {
           this.addQuantities[item.id] = 0;
         });
     }
+  }
+
+  deleteItem(item: InventoryItem) {
+    this.dialog
+      .open(ConfirmDialogComponent, {
+        width: '340px',
+        data: { name: item.name },
+      })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.inventoryService.delete(item.id).subscribe(() => {
+            this.items = this.items.filter((i) => i.id !== item.id);
+            this.setPagedItems();
+            this.snackBar.open('Item deleted.', '', {
+              duration: 2500,
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['snackbar-success'],
+            });
+          });
+        }
+      });
+  }
+
+  openAddDialog() {
+    this.dialog
+      .open(AddInventoryDialogComponent, { width: '420px' })
+      .afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          this.inventoryService.add(result).subscribe((newItem: any) => {
+            this.items.push(newItem);
+            this.items.sort((a, b) => a.name.localeCompare(b.name));
+            this.setPagedItems();
+            this.snackBar.open('Item added successfully!', '', {
+              duration: 3000,
+              horizontalPosition: 'end',
+              verticalPosition: 'top',
+              panelClass: ['snackbar-success'],
+            });
+          });
+        }
+      });
   }
 }
