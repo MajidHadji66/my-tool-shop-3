@@ -10,8 +10,8 @@ import { MatCardModule } from '@angular/material/card';
       <mat-card-title>Welcome to Garage Inventory</mat-card-title>
       <mat-card-content>
         <p>
-          Manage your garage tools and parts efficiently. Use the navigation bar
-          to view inventory, learn about us, or contact support.
+          Manage your tools and parts efficiently. Use the navigation bar to
+          view inventory, learn about us, or contact support.
         </p>
       </mat-card-content>
     </mat-card>

@@ -129,7 +129,7 @@ export class AdminComponent {
   }
 
   login() {
-    if (this.username === 'admin' && this.password === 'admin123') {
+    if (this.username === 'admin' && this.password === '123!@#') {
       this.loggedIn = true;
       this.loginError = false;
       this.loadItems();
