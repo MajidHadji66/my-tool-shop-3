@@ -1,10 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [App, HttpClientTestingModule],
+      providers: [provideRouter(routes)],
     }).compileComponents();
   });
 
@@ -18,6 +22,6 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend');
+    expect(compiled.textContent).toContain('cascade tool shop');
   });
 });
