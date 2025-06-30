@@ -1,5 +1,27 @@
 <mat-toolbar color="primary">
-  <span>my tool shop</span>
+  <span
+    style="
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 1px 1px 4px #1976d2;
+    "
+    >cascade tool shop
+    <span
+      style="
+        display: block;
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        color: #bbdefb;
+        text-shadow: none;
+        margin-top: -4px;
+      "
+      >we have what you want!</span
+    >
+  </span>
   <span style="flex: 1 1 auto"></span>
   <button mat-button [routerLink]="['/']" routerLinkActive="active-link">
     Home
@@ -11,21 +33,29 @@
   >
     Inventory
   </button>
-  <button mat-button [routerLink]="['/cart']" routerLinkActive="active-link">
+  <button mat-button [routerLink]="['/about']" routerLinkActive="active-link">
+    About Us
+  </button>
+  <button mat-button [routerLink]="['/contact']" routerLinkActive="active-link">
+    Contact
+  </button>
+  <button mat-button [routerLink]="['/admin']" routerLinkActive="active-link">
+    Admin
+  </button>
+  <button
+    mat-icon-button
+    [routerLink]="['/cart']"
+    [disabled]="cartQuantity === 0"
+    routerLinkActive="active-link"
+    style="margin-left: 16px"
+  >
     <mat-icon
       matBadge="{{ cartQuantity }}"
       matBadgeColor="accent"
       *ngIf="cartQuantity > 0"
       >shopping_cart</mat-icon
     >
-    <span *ngIf="cartQuantity === 0">Cart</span>
-    <span *ngIf="cartQuantity > 0" style="margin-left: 4px">Cart</span>
-  </button>
-  <button mat-button [routerLink]="['/about']" routerLinkActive="active-link">
-    About Us
-  </button>
-  <button mat-button [routerLink]="['/contact']" routerLinkActive="active-link">
-    Contact
+    <mat-icon *ngIf="cartQuantity === 0">shopping_cart</mat-icon>
   </button>
 </mat-toolbar>
 <router-outlet></router-outlet>

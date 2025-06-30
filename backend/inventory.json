@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Socket Wrench",
     "type": "tool",
-    "quantity": 3,
+    "quantity": 53,
     "location": "Aisle 1",
     "price": 19.99
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "name": "Hammer",
     "type": "tool",
-    "quantity": 2,
+    "quantity": 1,
     "location": "Aisle 1",
     "price": 11.99
   },
@@ -83,7 +83,7 @@
     "id": 11,
     "name": "Utility Knife",
     "type": "tool",
-    "quantity": 15,
+    "quantity": 14,
     "location": "Aisle 1",
     "price": 4.99
   },
@@ -139,7 +139,7 @@
     "id": 18,
     "name": "Caulking Gun",
     "type": "tool",
-    "quantity": 5,
+    "quantity": 3,
     "location": "Aisle 1",
     "price": 9.49
   },
@@ -363,7 +363,7 @@
     "id": 46,
     "name": "Wheel Bearing",
     "type": "part",
-    "quantity": 10,
+    "quantity": 9,
     "location": "Aisle 3",
     "price": 39.99
   },
