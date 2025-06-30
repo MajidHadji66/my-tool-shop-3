@@ -7,10 +7,12 @@ import { CartComponent } from './components/cart.component';
 import { CheckoutComponent } from './components/checkout.component';
 import { OrderSummaryComponent } from './components/order-summary.component';
 import { AdminComponent } from './components/admin.component';
+import { InventoryDetail } from './components/inventory-detail/inventory-detail';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'inventory', component: InventoryList },
+  { path: 'inventory/:id', component: InventoryDetail },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'order-summary', component: OrderSummaryComponent },

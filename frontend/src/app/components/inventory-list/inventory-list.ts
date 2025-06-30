@@ -15,6 +15,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-list',
@@ -34,6 +35,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SortByNamePipe,
     MatTableModule,
     MatPaginatorModule,
+    RouterModule,
   ],
   templateUrl: './inventory-list.html',
   styleUrl: './inventory-list.scss',

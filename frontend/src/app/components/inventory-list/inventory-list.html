@@ -32,7 +32,9 @@
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let item">
-          <strong>{{ item.name }}</strong>
+          <a [routerLink]="['/inventory', item.id]" class="material-link">
+            <span>{{ item.name }}</span>
+          </a>
         </td>
       </ng-container>
 
@@ -99,3 +101,17 @@
     </ng-template>
   </mat-card>
 </div>
+
+<style>
+  .material-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dashed #888;
+    transition: border-bottom-color 0.2s;
+  }
+  .material-link:hover {
+    border-bottom-color: #1976d2;
+    color: #1976d2;
+  }
+</style>

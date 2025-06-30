@@ -9,6 +9,7 @@ export interface InventoryItem {
   quantity: number;
   location: string;
   price: number;
+  description?: string;
 }
 
 @Injectable({

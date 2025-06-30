@@ -5,7 +5,8 @@
     "type": "tool",
     "quantity": 53,
     "location": "Aisle 1",
-    "price": 19.99
+    "price": 19.99,
+    "description": "Versatile wrench for tightening and loosening nuts and bolts."
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "type": "part",
     "quantity": 25,
     "location": "Aisle 2",
-    "price": 7.49
+    "price": 7.49,
+    "description": "High-quality oil filter for clean engine performance."
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "type": "tool",
     "quantity": 16,
     "location": "Aisle 1",
-    "price": 14.99
+    "price": 14.99,
+    "description": "Set of flathead and Phillips screwdrivers for various tasks."
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "type": "part",
     "quantity": 7,
     "location": "Aisle 3",
-    "price": 29.99
+    "price": 29.99,
+    "description": "Durable brake pads for safe vehicle stopping."
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "type": "tool",
     "quantity": 1,
     "location": "Aisle 1",
-    "price": 11.99
+    "price": 11.99,
+    "description": "Heavy-duty hammer for construction and repairs."
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "type": "tool",
     "quantity": 15,
     "location": "Aisle 1",
-    "price": 9.99
+    "price": 9.99,
+    "description": "Multipurpose pliers for gripping and bending."
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "type": "tool",
     "quantity": 8,
     "location": "Aisle 1",
-    "price": 12.99
+    "price": 12.99,
+    "description": "Adjustable wrench for various bolt sizes."
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "type": "tool",
     "quantity": 7,
     "location": "Aisle 1",
-    "price": 24.99
+    "price": 24.99,
+    "description": "Precision torque wrench for accurate tightening."
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "type": "tool",
     "quantity": 20,
     "location": "Aisle 1",
-    "price": 8.99
+    "price": 8.99,
+    "description": "Set of hex keys for assembling furniture and bicycles."
   },
   {
     "id": 10,
@@ -77,7 +86,8 @@
     "type": "tool",
     "quantity": 18,
     "location": "Aisle 1",
-    "price": 6.99
+    "price": 6.99,
+    "description": "Measuring tape for accurate length measurements."
   },
   {
     "id": 11,
@@ -85,7 +95,8 @@
     "type": "tool",
     "quantity": 14,
     "location": "Aisle 1",
-    "price": 4.99
+    "price": 4.99,
+    "description": "Retractable knife for cutting various materials."
   },
   {
     "id": 12,
@@ -93,7 +104,8 @@
     "type": "tool",
     "quantity": 11,
     "location": "Aisle 1",
-    "price": 10.99
+    "price": 10.99,
+    "description": "Tool for cutting wire and small metal parts."
   },
   {
     "id": 13,
@@ -101,7 +113,8 @@
     "type": "tool",
     "quantity": 13,
     "location": "Aisle 1",
-    "price": 15.99
+    "price": 15.99,
+    "description": "Tool for checking surfaces are horizontally level."
   },
   {
     "id": 14,
@@ -109,7 +122,8 @@
     "type": "tool",
     "quantity": 8,
     "location": "Aisle 1",
-    "price": 22.99
+    "price": 22.99,
+    "description": "Set of chisels for carving and shaping wood."
   },
   {
     "id": 15,
@@ -117,7 +131,8 @@
     "type": "tool",
     "quantity": 10,
     "location": "Aisle 1",
-    "price": 18.99
+    "price": 18.99,
+    "description": "Manual saw for cutting wood and other materials."
   },
   {
     "id": 16,
@@ -125,7 +140,8 @@
     "type": "tool",
     "quantity": 6,
     "location": "Aisle 1",
-    "price": 16.99
+    "price": 16.99,
+    "description": "Wrench for gripping and turning pipes."
   },
   {
     "id": 17,
@@ -133,7 +149,8 @@
     "type": "tool",
     "quantity": 7,
     "location": "Aisle 1",
-    "price": 13.99
+    "price": 13.99,
+    "description": "Saw with a fine-toothed blade for cutting metal."
   },
   {
     "id": 18,
@@ -141,7 +158,8 @@
     "type": "tool",
     "quantity": 3,
     "location": "Aisle 1",
-    "price": 9.49
+    "price": 9.49,
+    "description": "Tool for applying caulk or sealant."
   },
   {
     "id": 19,
@@ -149,7 +167,8 @@
     "type": "tool",
     "quantity": 13,
     "location": "Aisle 1",
-    "price": 7.99
+    "price": 7.99,
+    "description": "Knife for applying and smoothing putty."
   },
   {
     "id": 20,
@@ -157,7 +176,8 @@
     "type": "tool",
     "quantity": 8,
     "location": "Aisle 1",
-    "price": 11.49
+    "price": 11.49,
+    "description": "Gun for fastening materials with staples."
   },
   {
     "id": 21,
@@ -165,7 +185,8 @@
     "type": "tool",
     "quantity": 12,
     "location": "Aisle 1",
-    "price": 15.49
+    "price": 15.49,
+    "description": "Hammer with a claw for removing nails."
   },
   {
     "id": 22,
@@ -173,7 +194,8 @@
     "type": "tool",
     "quantity": 10,
     "location": "Aisle 1",
-    "price": 9.99
+    "price": 9.99,
+    "description": "Mallet with a rubber head for soft striking."
   },
   {
     "id": 23,
@@ -181,7 +203,8 @@
     "type": "tool",
     "quantity": 9,
     "location": "Aisle 1",
-    "price": 12.49
+    "price": 12.49,
+    "description": "Tool for measuring and marking right angles."
   },
   {
     "id": 24,
@@ -189,7 +212,8 @@
     "type": "tool",
     "quantity": 11,
     "location": "Aisle 1",
-    "price": 14.49
+    "price": 14.49,
+    "description": "Adjustable wrench for gripping various sizes of nuts and bolts."
   },
   {
     "id": 25,
@@ -197,7 +221,8 @@
     "type": "tool",
     "quantity": 7,
     "location": "Aisle 1",
-    "price": 10.49
+    "price": 10.49,
+    "description": "Pliers with adjustable jaws for gripping irregularly shaped objects."
   },
   {
     "id": 26,
@@ -205,7 +230,8 @@
     "type": "tool",
     "quantity": 8,
     "location": "Aisle 1",
-    "price": 11.99
+    "price": 11.99,
+    "description": "Cutters for making precise cuts in wire and small metal parts."
   },
   {
     "id": 27,
@@ -213,7 +239,8 @@
     "type": "tool",
     "quantity": 10,
     "location": "Aisle 1",
-    "price": 9.49
+    "price": 9.49,
+    "description": "Pliers with long, thin jaws for reaching tight spaces."
   },
   {
     "id": 28,
@@ -221,7 +248,8 @@
     "type": "tool",
     "quantity": 15,
     "location": "Aisle 1",
-    "price": 8.99
+    "price": 8.99,
+    "description": "Screwdriver with a flat blade for slotted screws."
   },
   {
     "id": 29,
@@ -229,7 +257,8 @@
     "type": "tool",
     "quantity": 15,
     "location": "Aisle 1",
-    "price": 8.99
+    "price": 8.99,
+    "description": "Screwdriver with a cross-shaped blade for Phillips screws."
   },
   {
     "id": 30,
@@ -237,7 +266,8 @@
     "type": "part",
     "quantity": 20,
     "location": "Aisle 2",
-    "price": 15.99
+    "price": 15.99,
+    "description": "Filter to remove particles from the air intake."
   },
   {
     "id": 31,
@@ -245,7 +275,8 @@
     "type": "part",
     "quantity": 30,
     "location": "Aisle 2",
-    "price": 4.99
+    "price": 4.99,
+    "description": "Ignition component that creates a spark to ignite the air/fuel mixture."
   },
   {
     "id": 32,
@@ -253,7 +284,8 @@
     "type": "part",
     "quantity": 5,
     "location": "Aisle 3",
-    "price": 25.99
+    "price": 25.99,
+    "description": "Belt that synchronizes the rotation of the crankshaft and camshaft."
   },
   {
     "id": 33,
@@ -261,7 +293,8 @@
     "type": "part",
     "quantity": 3,
     "location": "Aisle 3",
-    "price": 199.99
+    "price": 199.99,
+    "description": "Device that generates electrical power for the vehicle."
   },
   {
     "id": 34,
@@ -269,7 +302,8 @@
     "type": "part",
     "quantity": 12,
     "location": "Aisle 2",
-    "price": 9.99
+    "price": 9.99,
+    "description": "Hose that carries coolant to and from the radiator."
   },
   {
     "id": 35,
@@ -277,7 +311,8 @@
     "type": "part",
     "quantity": 4,
     "location": "Aisle 3",
-    "price": 39.99
+    "price": 39.99,
+    "description": "Pump that delivers fuel from the tank to the engine."
   },
   {
     "id": 36,
@@ -285,7 +320,8 @@
     "type": "part",
     "quantity": 6,
     "location": "Aisle 3",
-    "price": 49.99
+    "price": 49.99,
+    "description": "Pump that circulates coolant through the engine and radiator."
   },
   {
     "id": 37,
@@ -293,7 +329,8 @@
     "type": "part",
     "quantity": 10,
     "location": "Aisle 3",
-    "price": 29.99
+    "price": 29.99,
+    "description": "Disc that the brake pads clamp onto to create friction."
   },
   {
     "id": 38,
@@ -301,7 +338,8 @@
     "type": "part",
     "quantity": 18,
     "location": "Aisle 2",
-    "price": 12.99
+    "price": 12.99,
+    "description": "Bulb that provides illumination for the vehicle's headlights."
   },
   {
     "id": 39,
@@ -309,7 +347,8 @@
     "type": "part",
     "quantity": 8,
     "location": "Aisle 2",
-    "price": 14.99
+    "price": 14.99,
+    "description": "Lens that covers and protects the tail light bulb."
   },
   {
     "id": 40,
@@ -317,7 +356,8 @@
     "type": "part",
     "quantity": 14,
     "location": "Aisle 2",
-    "price": 11.99
+    "price": 11.99,
+    "description": "Filter that cleans the air entering the vehicle's cabin."
   },
   {
     "id": 41,
@@ -325,7 +365,8 @@
     "type": "part",
     "quantity": 7,
     "location": "Aisle 3",
-    "price": 17.99
+    "price": 17.99,
+    "description": "Belt that drives accessories like the alternator and water pump."
   },
   {
     "id": 42,
@@ -333,7 +374,8 @@
     "type": "part",
     "quantity": 9,
     "location": "Aisle 3",
-    "price": 24.99
+    "price": 24.99,
+    "description": "Regulates the engine's temperature by controlling coolant flow."
   },
   {
     "id": 43,
@@ -341,7 +383,8 @@
     "type": "part",
     "quantity": 11,
     "location": "Aisle 3",
-    "price": 18.99
+    "price": 18.99,
+    "description": "Gasket that seals the oil pan to the engine block."
   },
   {
     "id": 44,
@@ -349,7 +392,8 @@
     "type": "part",
     "quantity": 13,
     "location": "Aisle 2",
-    "price": 7.99
+    "price": 7.99,
+    "description": "Valve that regulates the engine's positive crankcase ventilation system."
   },
   {
     "id": 45,
@@ -357,7 +401,8 @@
     "type": "part",
     "quantity": 6,
     "location": "Aisle 3",
-    "price": 29.99
+    "price": 29.99,
+    "description": "Coil that transforms battery voltage to create a spark for ignition."
   },
   {
     "id": 46,
@@ -365,7 +410,8 @@
     "type": "part",
     "quantity": 9,
     "location": "Aisle 3",
-    "price": 39.99
+    "price": 39.99,
+    "description": "Bearing that allows the wheel to rotate with minimal friction."
   },
   {
     "id": 47,
@@ -373,7 +419,8 @@
     "type": "part",
     "quantity": 8,
     "location": "Aisle 3",
-    "price": 59.99
+    "price": 59.99,
+    "description": "Absorber that dampens the impact of bumps and shocks."
   },
   {
     "id": 48,
@@ -381,7 +428,8 @@
     "type": "part",
     "quantity": 7,
     "location": "Aisle 3",
-    "price": 49.99
+    "price": 49.99,
+    "description": "Mount that secures the strut to the vehicle's body."
   },
   {
     "id": 49,
@@ -389,7 +437,8 @@
     "type": "part",
     "quantity": 5,
     "location": "Aisle 3",
-    "price": 75.99
+    "price": 75.99,
+    "description": "Arm that connects the wheel hub to the chassis, allowing for up and down movement."
   },
   {
     "id": 50,
@@ -397,6 +446,7 @@
     "type": "part",
     "quantity": 9,
     "location": "Aisle 3",
-    "price": 9.99
+    "price": 9.99,
+    "description": "Joint that allows the suspension control arm to pivot."
   }
 ]

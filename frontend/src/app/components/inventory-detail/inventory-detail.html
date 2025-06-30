@@ -1,1 +1,35 @@
-<p>inventory-detail works!</p>
+<div *ngIf="item; else loading">
+  <mat-card>
+    <mat-card-title>{{ item.name }}</mat-card-title>
+    <mat-card-content>
+      <div style="display: flex; align-items: flex-start; gap: 2rem">
+        <img
+          src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=180&q=80"
+          alt="Tool placeholder"
+          title="Tool Image"
+          style="
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fafafa;
+          "
+        />
+        <div>
+          <p><strong>Type:</strong> {{ item.type }}</p>
+          <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+          <p><strong>Location:</strong> {{ item.location }}</p>
+          <p><strong>Price:</strong> ${{ item.price }}</p>
+          <p *ngIf="item.description"><strong>Description:</strong> {{ item.description }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+    <button mat-button color="primary" (click)="goBack()">
+      Back to Inventory
+    </button>
+  </mat-card>
+</div>
+<ng-template #loading>
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</ng-template>
