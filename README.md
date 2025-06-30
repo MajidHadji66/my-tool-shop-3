@@ -1,5 +1,4 @@
-# My Tool Shop
-
+# Cascade Tool Shop 
 A full-stack web application for managing a tool shop, featuring inventory management, cart, checkout, admin, and contact features. Built with Angular (frontend) and Node.js/Express (backend).
 
 ## Features
