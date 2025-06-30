@@ -12,7 +12,7 @@ import { FilterTypePipe } from './filter-type.pipe';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { SortByNamePipe } from './sort-by-name.pipe';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
@@ -36,6 +36,7 @@ import { RouterModule } from '@angular/router';
     MatTableModule,
     MatPaginatorModule,
     RouterModule,
+    FormsModule,
   ],
   templateUrl: './inventory-list.html',
   styleUrl: './inventory-list.scss',
@@ -81,6 +82,7 @@ export class InventoryList {
     return this._selectedType;
   }
   private _selectedType: string = '';
+  selectedLocation = '';
 
   deleteItem(id: number) {
     this.inventoryService.delete(id).subscribe(() => {

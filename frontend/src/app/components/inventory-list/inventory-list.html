@@ -1,18 +1,17 @@
 <div style="max-width: 900px; margin: 2rem auto">
   <mat-card>
     <mat-card-title>Inventory List</mat-card-title>
-    <mat-form-field
-      appearance="outline"
-      style="width: 100%; margin-bottom: 1rem"
-    >
-      <mat-label>Filter by Type</mat-label>
-      <mat-select [(value)]="selectedType">
-        <mat-option value="">All</mat-option>
-        <mat-option *ngFor="let type of types" [value]="type"
-          >{{ type }}</mat-option
-        >
-      </mat-select>
-    </mat-form-field>
+    <div style="display: flex; gap: 1rem; margin-bottom: 1rem">
+      <mat-form-field appearance="outline" style="flex: 1">
+        <mat-label>Filter by Type</mat-label>
+        <mat-select [(value)]="selectedType">
+          <mat-option value="">All</mat-option>
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{ type }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <table
       mat-table
