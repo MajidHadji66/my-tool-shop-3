@@ -21,7 +21,9 @@
           <p><strong>Quantity:</strong> {{ item.quantity }}</p>
           <p><strong>Location:</strong> {{ item.location }}</p>
           <p><strong>Price:</strong> ${{ item.price }}</p>
-          <p *ngIf="item.description"><strong>Description:</strong> {{ item.description }}</p>
+          <p *ngIf="item.description">
+            <strong>Description:</strong> {{ item.description }}
+          </p>
         </div>
       </div>
     </mat-card-content>
