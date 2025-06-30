@@ -24,7 +24,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './app.scss',
 })
 export class App implements OnInit, OnDestroy {
-  protected title = 'frontend';
+  protected title = 'Cascade Tool Shop';
   cartQuantity = 0;
   private cartSub?: Subscription;
 
