@@ -27,9 +27,26 @@
         </div>
       </div>
     </mat-card-content>
-    <button mat-button color="primary" (click)="goBack()">
-      Back to Inventory
-    </button>
+    <div
+      style="display: flex; gap: 1rem; margin-top: 1.5rem; align-items: center"
+    >
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="addToCart()"
+        [disabled]="!item || item.quantity === 0 || adding"
+      >
+        Add to Cart
+      </button>
+      <span
+        *ngIf="item && item.quantity === 0"
+        style="color: #b71c1c; font-size: 0.95em"
+        >Out of stock</span
+      >
+      <button mat-button color="primary" (click)="goBack()">
+        Back to Inventory
+      </button>
+    </div>
   </mat-card>
 </div>
 <ng-template #loading>

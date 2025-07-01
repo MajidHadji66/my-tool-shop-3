@@ -1,17 +1,78 @@
 <div style="max-width: 900px; margin: 2rem auto">
+  <form
+    (ngSubmit)="onSearch()"
+    style="
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+    "
+  >
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      style="
+        width: 100%;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px #0001;
+      "
+    >
+      <mat-label>Search inventory</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchQuery"
+        name="searchQuery"
+        (keyup.enter)="onSearch()"
+        placeholder="Search by name, type, location..."
+        style="
+          color: #222;
+          font-size: 1.08rem;
+          background: transparent;
+          border-radius: 6px;
+          width: 100%;
+        "
+        autocomplete="off"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        *ngIf="searchQuery"
+        (click)="clearSearch()"
+        tabindex="-1"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-icon-button color="primary" type="submit" aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form>
+  <!-- Search result banner moved below form -->
+  <div
+    *ngIf="isSearchActive"
+    style="margin-bottom: 1rem; display: flex; align-items: center"
+  >
+    <mat-icon color="primary" style="vertical-align: middle">search</mat-icon>
+    <span style="font-weight: 500; color: #1976d2; margin-left: 0.25rem"
+      >Search results for:</span
+    >
+    <span style="font-style: italic; color: #333; margin-left: 0.25rem"
+      >"{{ searchQuery }}"</span
+    >
+    <button
+      mat-button
+      color="primary"
+      (click)="clearSearch()"
+      style="margin-left: 0.5rem"
+    >
+      Clear
+    </button>
+  </div>
   <mat-card>
     <mat-card-title>Inventory List</mat-card-title>
-    <div style="display: flex; gap: 1rem; margin-bottom: 1rem">
-      <mat-form-field appearance="outline" style="flex: 1">
-        <mat-label>Filter by Type</mat-label>
-        <mat-select [(value)]="selectedType">
-          <mat-option value="">All</mat-option>
-          <mat-option *ngFor="let type of types" [value]="type">
-            {{ type }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+    <!-- Type selector removed -->
 
     <table
       mat-table
@@ -87,7 +148,7 @@
       ></tr>
     </table>
     <mat-paginator
-      [length]="(items | filterType:selectedType | sortByName).length"
+      [length]="items.length"
       [pageSize]="pageSize"
       [pageSizeOptions]="[15, 30, 50]"
       (page)="onPageChange($event)"

@@ -1,11 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
+// import { MatFormFieldModule } from '@angular/material/form-field';
+// import { MatInputModule } from '@angular/material/input';
 import { CartService } from './services/cart.service';
 import { Subscription } from 'rxjs';
 
@@ -19,6 +22,9 @@ import { Subscription } from 'rxjs';
     MatBadgeModule,
     RouterModule,
     CommonModule,
+    // FormsModule,
+    // MatFormFieldModule,
+    // MatInputModule,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

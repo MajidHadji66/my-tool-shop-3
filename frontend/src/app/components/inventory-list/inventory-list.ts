@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+// ...existing code...
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InventoryService, InventoryItem } from '../../services/inventory';
 import { CartService } from '../../services/cart.service';
@@ -17,6 +18,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-inventory-list',
   standalone: true,
@@ -28,11 +31,9 @@ import { RouterModule } from '@angular/router';
     MatProgressSpinnerModule,
     MatButtonModule,
     MatSelectModule,
-    FilterTypePipe,
     MatSnackBarModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    SortByNamePipe,
     MatTableModule,
     MatPaginatorModule,
     RouterModule,
@@ -41,27 +42,67 @@ import { RouterModule } from '@angular/router';
   templateUrl: './inventory-list.html',
   styleUrl: './inventory-list.scss',
 })
-export class InventoryList {
+export class InventoryList implements OnInit {
+  // Removed duplicate property declarations
+
+  // Removed duplicate constructor
+
+  onSearch(): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { search: this.searchQuery || null },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  clearSearch(): void {
+    this.searchQuery = '';
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { search: null },
+      queryParamsHandling: 'merge',
+    });
+  }
   items: InventoryItem[] = [];
   pagedItems: InventoryItem[] = [];
   pageSize = 15;
   pageIndex = 0;
 
+  searchQuery: string = '';
+  isSearchActive = false;
+
   constructor(
     public inventoryService: InventoryService,
     private cartService: CartService,
-    private snackBar: MatSnackBar
-  ) {
-    this.inventoryService.getAll().subscribe((data: InventoryItem[]) => {
-      this.items = data;
-      this.setPagedItems();
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    public router: Router
+  ) {}
+
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.searchQuery = params['search'] || '';
+      this.isSearchActive = !!this.searchQuery;
+      this.inventoryService.getAll().subscribe((data: InventoryItem[]) => {
+        this.items = data;
+        this.setPagedItems();
+      });
     });
   }
 
   setPagedItems() {
-    const filtered = this.items
-      .filter((item) => !this.selectedType || item.type === this.selectedType)
-      .sort((a, b) => a.name.localeCompare(b.name));
+    let filtered = this.items;
+    if (this.searchQuery) {
+      const q = this.searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        (item) =>
+          item.name.toLowerCase().includes(q) ||
+          item.type.toLowerCase().includes(q) ||
+          item.location.toLowerCase().includes(q) ||
+          (item.description && item.description.toLowerCase().includes(q))
+      );
+    }
+    filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
     const start = this.pageIndex * this.pageSize;
     const end = start + this.pageSize;
     this.pagedItems = filtered.slice(start, end);
@@ -73,16 +114,7 @@ export class InventoryList {
     this.setPagedItems();
   }
 
-  set selectedType(val: string) {
-    this._selectedType = val;
-    this.pageIndex = 0;
-    this.setPagedItems();
-  }
-  get selectedType(): string {
-    return this._selectedType;
-  }
-  private _selectedType: string = '';
-  selectedLocation = '';
+  // Type selector and related code removed
 
   deleteItem(id: number) {
     this.inventoryService.delete(id).subscribe(() => {
@@ -118,7 +150,5 @@ export class InventoryList {
     }
   }
 
-  get types(): string[] {
-    return Array.from(new Set(this.items.map((item) => item.type)));
-  }
+  // get types() removed
 }
