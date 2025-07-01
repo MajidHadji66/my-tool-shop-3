@@ -1,0 +1,109 @@
+<mat-card style="max-width: 700px; margin: 2rem auto">
+  <mat-card-title>Admin Inventory Management</mat-card-title>
+  <div *ngIf="!loggedIn">
+    <form (ngSubmit)="login()">
+      <mat-form-field style="width: 100%">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="username" name="username" required />
+      </mat-form-field>
+      <mat-form-field style="width: 100%">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [(ngModel)]="password"
+          name="password"
+          type="password"
+          required
+        />
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Login</button>
+    </form>
+    <div *ngIf="loginError" style="color: red; margin-top: 8px">
+      Invalid credentials
+    </div>
+  </div>
+  <div *ngIf="loggedIn">
+    <button
+      mat-raised-button
+      color="primary"
+      style="margin-bottom: 1rem"
+      (click)="openAddDialog()"
+    >
+      Add Item
+    </button>
+    <table
+      mat-table
+      [dataSource]="pagedItems"
+      style="width: 100%; margin-bottom: 1rem"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Item</th>
+        <td mat-cell *matCellDef="let item">{{ item.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="location">
+        <th mat-header-cell *matHeaderCellDef>Location</th>
+        <td mat-cell *matCellDef="let item">{{ item.location }}</td>
+      </ng-container>
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Current Qty</th>
+        <td mat-cell *matCellDef="let item">{{ item.quantity }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Change QTY">
+        <th mat-header-cell *matHeaderCellDef>Change QTY</th>
+        <td mat-cell *matCellDef="let item">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <button
+              mat-mini-fab
+              color="primary"
+              (click)="deQuantity(item)"
+              [disabled]="
+                !addQuantities[item.id] ||
+                addQuantities[item.id] < 1 ||
+                item.quantity < 1
+              "
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+            <input
+              matInput
+              type="number"
+              min="1"
+              [(ngModel)]="addQuantities[item.id]"
+              name="addQty-{{ item.id }}"
+              style="width: 50px; text-align: center"
+            />
+            <button
+              mat-mini-fab
+              color="primary"
+              (click)="addQuantity(item)"
+              [disabled]="!addQuantities[item.id] || addQuantities[item.id] < 1"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let item">{{ item.type }}</td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let item">
+          <button mat-icon-button color="warn" (click)="deleteItem(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [length]="items.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[15, 30, 50]"
+      (page)="onPageChange($event)"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</mat-card>

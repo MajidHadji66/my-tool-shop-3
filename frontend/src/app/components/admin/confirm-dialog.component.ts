@@ -28,3 +28,4 @@ export class ConfirmDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: { name: string }
   ) {}
 }
+// Moved from ../confirm-dialog.component.ts

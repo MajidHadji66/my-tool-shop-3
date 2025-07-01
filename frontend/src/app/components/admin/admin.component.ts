@@ -5,10 +5,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { InventoryService, InventoryItem } from '../services/inventory';
+import { InventoryService, InventoryItem } from '../../services/inventory';
 import { AddInventoryDialogComponent } from './add-inventory-dialog.component';
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 
@@ -25,95 +26,9 @@ import { ConfirmDialogComponent } from './confirm-dialog.component';
     MatPaginatorModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatIconModule,
   ],
-  template: `
-    <mat-card style="max-width:700px;margin:2rem auto;">
-      <mat-card-title>Admin Inventory Management</mat-card-title>
-      <div *ngIf="!loggedIn">
-        <form (ngSubmit)="login()">
-          <mat-form-field style="width:100%">
-            <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="username" name="username" required />
-          </mat-form-field>
-          <mat-form-field style="width:100%">
-            <mat-label>Password</mat-label>
-            <input
-              matInput
-              [(ngModel)]="password"
-              name="password"
-              type="password"
-              required
-            />
-          </mat-form-field>
-          <button mat-raised-button color="primary" type="submit">Login</button>
-        </form>
-        <div *ngIf="loginError" style="color:red;margin-top:8px;">
-          Invalid credentials
-        </div>
-      </div>
-      <div *ngIf="loggedIn">
-        <button
-          mat-raised-button
-          color="primary"
-          style="margin-bottom:1rem;"
-          (click)="openAddDialog()"
-        >
-          Add Item
-        </button>
-        <table
-          mat-table
-          [dataSource]="pagedItems"
-          style="width:100%;margin-bottom:1rem;"
-        >
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Item</th>
-            <td mat-cell *matCellDef="let item">{{ item.name }}</td>
-          </ng-container>
-          <ng-container matColumnDef="quantity">
-            <th mat-header-cell *matHeaderCellDef>Current Qty</th>
-            <td mat-cell *matCellDef="let item">{{ item.quantity }}</td>
-          </ng-container>
-          <ng-container matColumnDef="add">
-            <th mat-header-cell *matHeaderCellDef>Add Qty</th>
-            <td mat-cell *matCellDef="let item">
-              <input
-                matInput
-                type="number"
-                min="1"
-                [(ngModel)]="addQuantities[item.id]"
-                name="addQty-{{ item.id }}"
-                style="width:60px;"
-              />
-              <button mat-button color="primary" (click)="addQuantity(item)">
-                Add
-              </button>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="type">
-            <th mat-header-cell *matHeaderCellDef>Type</th>
-            <td mat-cell *matCellDef="let item">{{ item.type }}</td>
-          </ng-container>
-          <ng-container matColumnDef="delete">
-            <th mat-header-cell *matHeaderCellDef>Delete</th>
-            <td mat-cell *matCellDef="let item">
-              <button mat-button color="warn" (click)="deleteItem(item)">
-                Delete
-              </button>
-            </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
-        <mat-paginator
-          [length]="items.length"
-          [pageSize]="pageSize"
-          [pageSizeOptions]="[15, 30, 50]"
-          (page)="onPageChange($event)"
-          showFirstLastButtons
-        ></mat-paginator>
-      </div>
-    </mat-card>
-  `,
+  templateUrl: './admin.component.html',
 })
 export class AdminComponent {
   username = '';
@@ -125,7 +40,14 @@ export class AdminComponent {
   pageSize = 15;
   pageIndex = 0;
   addQuantities: { [id: number]: number } = {};
-  displayedColumns = ['name', 'type', 'quantity', 'add', 'delete'];
+  displayedColumns = [
+    'name',
+    'location',
+    'quantity',
+    'Change QTY',
+    'type',
+    'delete',
+  ];
 
   constructor(
     public inventoryService: InventoryService,
@@ -169,6 +91,18 @@ export class AdminComponent {
     if (qty && qty > 0) {
       this.inventoryService
         .update(item.id, { quantity: item.quantity + qty })
+        .subscribe((updated: InventoryItem) => {
+          item.quantity = updated.quantity;
+          this.addQuantities[item.id] = 0;
+        });
+    }
+  }
+
+  deQuantity(item: InventoryItem) {
+    const qty = this.addQuantities[item.id];
+    if (qty && qty > 0 && item.quantity - qty >= 0) {
+      this.inventoryService
+        .update(item.id, { quantity: item.quantity - qty })
         .subscribe((updated: InventoryItem) => {
           item.quantity = updated.quantity;
           this.addQuantities[item.id] = 0;

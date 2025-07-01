@@ -6,7 +6,7 @@ import { InventoryList } from './components/inventory-list/inventory-list';
 import { CartComponent } from './components/cart.component';
 import { CheckoutComponent } from './components/checkout.component';
 import { OrderSummaryComponent } from './components/order-summary.component';
-import { AdminComponent } from './components/admin.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { InventoryDetail } from './components/inventory-detail/inventory-detail';
 
 export const routes: Routes = [
