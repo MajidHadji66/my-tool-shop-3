@@ -29,6 +29,7 @@ import { ConfirmDialogComponent } from './confirm-dialog.component';
     MatIconModule,
   ],
   templateUrl: './admin.component.html',
+  styleUrl: './admin.component.scss',
 })
 export class AdminComponent {
   username = '';
@@ -37,6 +38,7 @@ export class AdminComponent {
   loginError = false;
   items: InventoryItem[] = [];
   pagedItems: InventoryItem[] = [];
+  filteredLength = 0;
   pageSize = 15;
   pageIndex = 0;
   addQuantities: { [id: number]: number } = {};
@@ -49,6 +51,9 @@ export class AdminComponent {
     'delete',
   ];
 
+  searchQuery: string = '';
+  isSearchActive = false;
+
   constructor(
     public inventoryService: InventoryService,
     public dialog: MatDialog,
@@ -59,15 +64,46 @@ export class AdminComponent {
 
   loadItems() {
     this.inventoryService.getAll().subscribe((data: InventoryItem[]) => {
-      this.items = data.slice().sort((a, b) => a.name.localeCompare(b.name));
+      this.items = data.slice();
       this.setPagedItems();
     });
   }
 
+  onSearch() {
+    this.isSearchActive = !!this.searchQuery;
+    this.pageIndex = 0;
+    this.setPagedItems();
+  }
+
+  clearSearch() {
+    this.searchQuery = '';
+    this.isSearchActive = false;
+    this.pageIndex = 0;
+    this.setPagedItems();
+  }
+
   setPagedItems() {
+    let filtered = this.items;
+    if (this.searchQuery) {
+      const q = this.searchQuery.trim().toLowerCase();
+      // Helper to split a string into words (alphanumeric only), handles undefined
+      const getWords = (str: string | undefined) =>
+        str
+          ? str
+              .toLowerCase()
+              .split(/[^a-zA-Z0-9]+/)
+              .filter((w) => w.length > 0)
+          : [];
+      const fields = (item: any) => [item.name, item.type, item.location];
+      filtered = filtered.filter((item) =>
+        fields(item).some((field) => getWords(field).includes(q))
+      );
+    }
+    filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
+    this.filteredLength = filtered.length;
     const start = this.pageIndex * this.pageSize;
     const end = start + this.pageSize;
-    this.pagedItems = this.items.slice(start, end);
+    this.pagedItems = filtered.slice(start, end);
   }
 
   onPageChange(event: any) {

@@ -1,5 +1,7 @@
-<mat-card style="max-width: 700px; margin: 2rem auto">
-  <mat-card-title>Admin Inventory Management</mat-card-title>
+<!-- Search bar and banner moved above mat-card, removed duplicate -->
+
+<div style="max-width: 700px; margin: 2rem auto">
+  <h1>Admin Inventory Management</h1>
   <div *ngIf="!loggedIn">
     <form (ngSubmit)="login()">
       <mat-form-field style="width: 100%">
@@ -23,14 +25,66 @@
     </div>
   </div>
   <div *ngIf="loggedIn">
-    <button
-      mat-raised-button
-      color="primary"
-      style="margin-bottom: 1rem"
-      (click)="openAddDialog()"
-    >
-      Add Item
-    </button>
+    <div style="margin-bottom: 1rem">
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="openAddDialog()"
+        style="margin-bottom: 10px"
+      >
+        Add Item
+      </button>
+      <form (ngSubmit)="onSearch()" class="inventory-search-form">
+        <mat-form-field appearance="outline" class="inventory-search-field">
+          <mat-label>Search inventory</mat-label>
+          <input
+            matInput
+            [(ngModel)]="searchQuery"
+            name="searchQuery"
+            (keydown.enter)="$event.preventDefault(); onSearch()"
+            placeholder="Search by name, type, location"
+            class="inventory-search-input"
+            autocomplete="off"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            *ngIf="searchQuery"
+            (click)="$event.preventDefault(); searchQuery = ''; clearSearch()"
+            tabindex="-1"
+            aria-label="Clear search"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          mat-icon-button
+          color="primary"
+          type="submit"
+          aria-label="Search"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </form>
+      <div
+        *ngIf="isSearchActive"
+        style="
+          margin-top: 4px;
+          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        "
+      >
+        <mat-icon color="primary">search</mat-icon>
+        <span>Search results for:</span>
+        <span style="font-weight: 500">"{{ searchQuery }}"</span>
+        <button mat-button color="primary" (click)="clearSearch()">
+          Clear
+        </button>
+      </div>
+    </div>
     <table
       mat-table
       [dataSource]="pagedItems"
@@ -99,11 +153,11 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
     <mat-paginator
-      [length]="items.length"
+      [length]="filteredLength"
       [pageSize]="pageSize"
       [pageSizeOptions]="[15, 30, 50]"
       (page)="onPageChange($event)"
       showFirstLastButtons
     ></mat-paginator>
   </div>
-</mat-card>
+</div>
