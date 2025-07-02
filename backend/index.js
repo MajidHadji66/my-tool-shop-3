@@ -1,76 +1,93 @@
 const express = require("express");
 const cors = require("cors");
-const fs = require("fs");
-const path = require("path");
+const Database = require("better-sqlite3");
 
 const app = express();
 const PORT = 3000;
-const DATA_FILE = path.join(__dirname, "inventory.json");
+const db = new Database("inventory.db");
 
 app.use(cors());
 app.use(express.json());
 
+// Create table if it doesn't exist (now includes price)
+db.prepare(
+  `
+  CREATE TABLE IF NOT EXISTS inventory (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    type TEXT,
+    location TEXT,
+    description TEXT,
+    quantity INTEGER,
+    price REAL
+  )
+  `
+).run();
+
 // Get all inventory items
 app.get("/api/inventory", (req, res) => {
-  fs.readFile(DATA_FILE, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Failed to read data" });
-    res.json(JSON.parse(data));
-  });
+  const items = db.prepare("SELECT * FROM inventory").all();
+  res.json(items);
 });
 
 // Get a single item by id
 app.get("/api/inventory/:id", (req, res) => {
-  fs.readFile(DATA_FILE, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Failed to read data" });
-    const items = JSON.parse(data);
-    const item = items.find((i) => i.id === parseInt(req.params.id));
-    if (!item) return res.status(404).json({ error: "Item not found" });
-    res.json(item);
-  });
+  const item = db
+    .prepare("SELECT * FROM inventory WHERE id = ?")
+    .get(req.params.id);
+  if (!item) return res.status(404).json({ error: "Item not found" });
+  res.json(item);
 });
 
 // Add a new item
 app.post("/api/inventory", (req, res) => {
-  fs.readFile(DATA_FILE, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Failed to read data" });
-    const items = JSON.parse(data);
-    const newItem = { ...req.body, id: Date.now() };
-    items.push(newItem);
-    fs.writeFile(DATA_FILE, JSON.stringify(items, null, 2), (err) => {
-      if (err) return res.status(500).json({ error: "Failed to save data" });
-      res.status(201).json(newItem);
-    });
-  });
+  const { name, type, location, description, quantity, price } = req.body;
+  const stmt = db.prepare(
+    "INSERT INTO inventory (name, type, location, description, quantity, price) VALUES (?, ?, ?, ?, ?, ?)"
+  );
+  const info = stmt.run(name, type, location, description, quantity, price);
+  const newItem = {
+    id: info.lastInsertRowid,
+    name,
+    type,
+    location,
+    description,
+    quantity,
+    price,
+  };
+  res.status(201).json(newItem);
 });
 
 // Update an item
 app.put("/api/inventory/:id", (req, res) => {
-  fs.readFile(DATA_FILE, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Failed to read data" });
-    let items = JSON.parse(data);
-    const idx = items.findIndex((i) => i.id === parseInt(req.params.id));
-    if (idx === -1) return res.status(404).json({ error: "Item not found" });
-    items[idx] = { ...items[idx], ...req.body };
-    fs.writeFile(DATA_FILE, JSON.stringify(items, null, 2), (err) => {
-      if (err) return res.status(500).json({ error: "Failed to save data" });
-      res.json(items[idx]);
-    });
-  });
+  const { name, type, location, description, quantity, price } = req.body;
+  const stmt = db.prepare(
+    "UPDATE inventory SET name=?, type=?, location=?, description=?, quantity=?, price=? WHERE id=?"
+  );
+  const info = stmt.run(
+    name,
+    type,
+    location,
+    description,
+    quantity,
+    price,
+    req.params.id
+  );
+  if (info.changes === 0)
+    return res.status(404).json({ error: "Item not found" });
+  const updatedItem = db
+    .prepare("SELECT * FROM inventory WHERE id = ?")
+    .get(req.params.id);
+  res.json(updatedItem);
 });
 
 // Delete an item
 app.delete("/api/inventory/:id", (req, res) => {
-  fs.readFile(DATA_FILE, "utf8", (err, data) => {
-    if (err) return res.status(500).json({ error: "Failed to read data" });
-    let items = JSON.parse(data);
-    const idx = items.findIndex((i) => i.id === parseInt(req.params.id));
-    if (idx === -1) return res.status(404).json({ error: "Item not found" });
-    const deleted = items.splice(idx, 1);
-    fs.writeFile(DATA_FILE, JSON.stringify(items, null, 2), (err) => {
-      if (err) return res.status(500).json({ error: "Failed to save data" });
-      res.json(deleted[0]);
-    });
-  });
+  const stmt = db.prepare("DELETE FROM inventory WHERE id=?");
+  const info = stmt.run(req.params.id);
+  if (info.changes === 0)
+    return res.status(404).json({ error: "Item not found" });
+  res.json({ success: true });
 });
 
 app.listen(PORT, () => {

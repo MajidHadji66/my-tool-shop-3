@@ -10,7 +10,7 @@
         matInput
         [(ngModel)]="searchQuery"
         name="searchQuery"
-        (keyup.enter)="onSearch()"
+        (keydown.enter)="$event.preventDefault(); onSearch()"
         placeholder="Search by name, type, location..."
         class="inventory-search-input"
         autocomplete="off"

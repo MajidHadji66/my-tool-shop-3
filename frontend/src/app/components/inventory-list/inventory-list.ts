@@ -19,6 +19,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-inventory-list',
@@ -38,15 +39,12 @@ import { ActivatedRoute, Router } from '@angular/router';
     MatPaginatorModule,
     RouterModule,
     FormsModule,
+    MatInputModule,
   ],
   templateUrl: './inventory-list.html',
   styleUrl: './inventory-list.scss',
 })
 export class InventoryList implements OnInit {
-  // Removed duplicate property declarations
-
-  // Removed duplicate constructor
-
   onSearch(): void {
     this.router.navigate([], {
       relativeTo: this.route,
@@ -93,16 +91,18 @@ export class InventoryList implements OnInit {
   setPagedItems() {
     let filtered = this.items;
     if (this.searchQuery) {
-      const q = this.searchQuery.toLowerCase();
-      filtered = filtered.filter(
+      const q = (this.searchQuery ?? '').toLowerCase();
+      filtered = this.items.filter(
         (item) =>
-          item.name.toLowerCase().includes(q) ||
-          item.type.toLowerCase().includes(q) ||
-          item.location.toLowerCase().includes(q) ||
-          (item.description && item.description.toLowerCase().includes(q))
+          (item.name ?? '').toLowerCase().includes(q) ||
+          (item.type ?? '').toLowerCase().includes(q) ||
+          (item.location ?? '').toLowerCase().includes(q) ||
+          (item.description ?? '').toLowerCase().includes(q)
       );
     }
-    filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
+    filtered = filtered.sort((a, b) =>
+      (a.name ?? '').localeCompare(b.name ?? '')
+    );
     const start = this.pageIndex * this.pageSize;
     const end = start + this.pageSize;
     this.pagedItems = filtered.slice(start, end);

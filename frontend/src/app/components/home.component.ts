@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
   imports: [MatCardModule],
   template: `
     <mat-card style="max-width:600px;margin:2rem auto;">
-      <mat-card-title>Welcome to Garage Inventory</mat-card-title>
+      <mat-card-title>Welcome to Cascade Tool Shop</mat-card-title>
       <mat-card-content>
         <p>
           Manage your tools and parts efficiently. Use the navigation bar to

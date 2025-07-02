@@ -7,9 +7,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-// import { FormsModule } from '@angular/forms';
-// import { MatFormFieldModule } from '@angular/material/form-field';
-// import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { CartService } from './services/cart.service';
 import { Subscription } from 'rxjs';
 
@@ -24,9 +24,9 @@ import { Subscription } from 'rxjs';
     RouterModule,
     CommonModule,
     HttpClientModule,
-    // FormsModule,
-    // MatFormFieldModule,
-    // MatInputModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
