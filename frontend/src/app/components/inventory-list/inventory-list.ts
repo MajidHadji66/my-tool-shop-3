@@ -100,6 +100,8 @@ export class InventoryList implements OnInit {
           (item.description ?? '').toLowerCase().includes(q)
       );
     }
+    // Filter out items with null/empty name or type
+    filtered = filtered.filter((item) => !!item.name && !!item.type);
     filtered = filtered.sort((a, b) =>
       (a.name ?? '').localeCompare(b.name ?? '')
     );

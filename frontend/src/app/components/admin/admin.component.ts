@@ -99,7 +99,7 @@ export class AdminComponent {
         fields(item).some((field) => getWords(field).includes(q))
       );
     }
-    filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
+    filtered = filtered.sort((a, b) => a.name?.localeCompare(b.name));
     this.filteredLength = filtered.length;
     const start = this.pageIndex * this.pageSize;
     const end = start + this.pageSize;
